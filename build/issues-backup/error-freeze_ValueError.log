@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "d:\Git\EEG\BMA\setup.py", line 291, in <module>
+    with RedirectStdStreams(stdout=cho, stderr=che):
+  File "d:\Git\EEG\BMA\setup.py", line 283, in __exit__
+    self._stdout.flush(); self._stderr.flush()
+ValueError: underlying buffer has been detached

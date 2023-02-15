@@ -1,0 +1,10 @@
+# Diretório contendo temporários
+build/exe.win-amd64-3.10/
+build/*.log
+
+# Artefatos não-eleitos
+icons/*/
+
+# Anotações transientes
+HelloWorld/trash.txt
+fixes.txt
