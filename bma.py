@@ -2,31 +2,7 @@ import random
 import time
 import wx
 
-from collections import namedtuple
-from collections import OrderedDict
-
-# Define a namedtuple
-Status = namedtuple("Status", ["description", "icon"])
-
-'''
-[PyNeuro] Connecting TCP Socket Host...
-[PyNeuro] Scanning device..
-[PyNeuro] Fitting Device..
-[PyNeuro] Successfully Connected ..
-[PyNeuro] Connection lost, trying to reconnect..
-'''
-status = OrderedDict()
-status  ["connected"] = Status("Conectado! Sinal de qualidade ótima","icons/connected_v1.png")
-status["st_fitting1"] = Status("Sintonizando headset... (fase 1 de 3)","icons/connecting1_v1.png")
-status["st_fitting2"] = Status("Sintonizando headset... (fase 2 de 3)","icons/connecting2_v1.png")
-status["st_fitting3"] = Status("Sintonizando headset... (fase 3 de 3)","icons/connecting3_v1.png")
-status   ["nosignal"] = Status("Desconectado, sem qualquer sinal","icons/nosignal_v1.png")
-status_at = list(status.values())
-'''
-print(status_at[1])  # 0-4 (the 5 values)
-print(status["st_fitting3"])
-quit(0)
-'''
+from PyNeuro.PyNeuro import PyNeuro
 
 class ScoreBar(wx.Window):
     def __init__(self, parent, value=0):
@@ -238,7 +214,7 @@ class StatusFrame(wx.Frame):
         self.statusbar.SetStatusText(str_lastForce, 2)
 
     def WriteStatus(self):
-        status_now = status_at[self._current_status]
+        status_now = PyNeuro.status_def_at[self._current_status]
         self.DrawIcon(status_now.icon)  # status bar
         self.statusbar.SetStatusText(status_now.description, 1)    
 
@@ -273,8 +249,6 @@ class StatusFrameOSC(StatusFrame):
         else:
             self.WriteStatus_LastBlinkForce(0)  # only in testing 
         self._current_status = (self._current_status + 1) % 5
-
-from PyNeuro.PyNeuro import PyNeuro
 
 class BmaSingleMeter(StatusFrame):
     def __init__(self):
