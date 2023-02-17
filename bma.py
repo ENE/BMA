@@ -179,6 +179,10 @@ class StatusFrame(wx.Frame):
         OnSize | __current_status = 2  *
          Timer | __current_status = 3  ...  '''
         self._current_status = 2  # começa "visualmente" desconectado, igual a 4
+        self._current_status = 4  # finalmente! TODO?
+
+        # TODO Segmentation fault no fechamento do início vazio
+        # TODO deixar mesmo com a piscada força=100 no início?
 
         self.InitUI()
 
@@ -213,8 +217,12 @@ class StatusFrame(wx.Frame):
         str_lastForce = "Da última: %d" % (percentage)
         self.statusbar.SetStatusText(str_lastForce, 2)
 
-    def WriteStatus(self):
+    def WriteStatus(self, status=None):
         status_now = PyNeuro.status_def_at[self._current_status]
+        if status:
+            status = PyNeuro.status_def[status]
+            self._current_status = status.index
+            status_now = status
         self.DrawIcon(status_now.icon)  # status bar
         self.statusbar.SetStatusText(status_now.description, 1)    
 
@@ -258,12 +266,18 @@ class BmaSingleMeter(StatusFrame):
     def Start_EEG(self):
         self.TGSP = PyNeuro()
         self.TGSP.set_blinkStrength_callback(self.OnBlinkStrength)
+        self.TGSP.set_status_callback(self.OnStatusChange)
+        # TODO dentro do PyNeuro, os callbacks de print() ou logger
+        # TODO estudar como detalhar o "error" genérico do parser
         self.TGSP.connect()
         self.TGSP.start()
 
     def OnBlinkStrength(self, value):  # 0-255
         percentage = int( (100*value) / 255 )  # 0-100
         self.scorePanel.PutScore(percentage)
+    
+    def OnStatusChange(self):
+        self.WriteStatus(self.TGSP.status) # needs lock?
 
 def test_single_meter():
     app = wx.App()
