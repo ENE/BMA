@@ -8,9 +8,9 @@ Naqueles acréscimos futuros poderá ser adotada alguma aprendizagem de máquina
 
 ### Significado para a palavra "modulação"
 
-Alguém que controle um braço robótico através do pensamento "modula", naquele intervalo de tempo, seus sinais cerebrais (EEG) para determinado **caráter que um software de computador entenda como entrada válida.** O mesmo raciocínio se aplica para sinais musculares (EMG) ou de proximidade ([IR][retrorreflexão]). Mesmo quando o software interpretador implementa alguma inteligência artificial, o conjunto da entrada tem seu domínio limitado.
+Alguém que controle um braço robótico através do pensamento "modula", naquele intervalo de tempo, seus sinais cerebrais (EEG) para determinado **caráter que um software de computador entenda como entrada válida.** Conceito análogo se aplica a sinais musculares (EMG) ou de proximidade ([IR][retrorreflexão]). Mesmo quando o software interpretador implementa alguma inteligência artificial, o conjunto da entrada tem seu domínio limitado.
 
-Em nosso contexto, um assistente de modulação será aquilo — no caso, uma aplicativo — que proverá ao usuário algum feedback que o estimule em direção ao acerto na sua modulação desejada. Observar um medidor (barra ou ponteiro) desenhando-se em tela é ter um feedback visual. Ouvir um som em determinada frequência é ter um feedback auditivo. Sentir algo vibrando com determinada intensidade é ter um feedback tátil.
+Em nosso contexto, um assistente de modulação será aquilo — no caso, um aplicativo — que proverá ao usuário algum feedback que o estimule em direção ao acerto na sua modulação desejada. Observar um medidor (barra ou ponteiro) desenhando-se em tela é ter um feedback visual. Ouvir um som em determinada frequência é ter um feedback auditivo. Sentir algo vibrando com determinada intensidade é ter um feedback tátil.
 
 O primeiro protótipo do BMA fornece feedback visual; mas que na realidade ainda não é aproveitado plenamente, em tempo real, apenas _a posteriori_. Uma barra de _score_ (pontuação) sinaliza a **força de uma piscada já detectada**. Feedback mais útil levaria em consideração o processamento simultâneo dos sinais. A mera **intenção de piscar** já deveria fornecer feedback.
 
