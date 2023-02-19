@@ -2,6 +2,9 @@
 build/exe.win-amd64-3.10/
 build/*.log
 
+__pycache__/
+testing/
+
 # Artefatos não-eleitos
 icons/*/
 

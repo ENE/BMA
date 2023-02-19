@@ -3,6 +3,7 @@ import time
 import wx
 
 from PyNeuro.PyNeuro import PyNeuro
+from switch import F12
 
 class ScoreBar(wx.Window):
     def __init__(self, parent, value=0):
@@ -273,6 +274,7 @@ class BmaSingleMeter(StatusFrame):
         self.TGSP.start()
 
     def OnBlinkStrength(self, value):  # 0-255
+        F12()
         percentage = int( (100*value) / 255 )  # 0-100
         self.scorePanel.PutScore(percentage)
     
@@ -283,6 +285,7 @@ def test_single_meter():
     app = wx.App()
     frame = BmaSingleMeter()
     frame.Show()
+    #frame.Raise() # mas o ACAT está mandando primeiro
     app.MainLoop()
 
 def test_status_things():
