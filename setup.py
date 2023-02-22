@@ -244,9 +244,7 @@ def ExecuteSetup():
                 options = {
                     'build_exe': {
                         'include_files': [ 'icons/' ],
-                        'packages': [
-                            'random', 'time', 'wx', 'collections', 'PyNeuro'
-                        ]   
+ 
                     }
                 }
             )
